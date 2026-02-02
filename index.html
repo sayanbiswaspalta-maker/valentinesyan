@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#fff;
+  text-align:center;
+}
+
+section{
+  padding:30px 20px;
+}
+
+h1,h2{
+  color:#ff4d88;
+}
+
+p{
+  color:#555;
+  font-size:14px;
+}
+
+/* YES / NO buttons */
+.buttons{
+  position:relative;
+  height:120px;
+}
+
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4d88;
+  color:white;
+}
+
+#no{
+  background:#ddd;
+  position:absolute;
+  left:55%;
+  top:60px;
+}
+
+/* hide sections */
+.hidden{
+  display:none;
+}
+
+/* photo */
+.photo{
+  width:100%;
+  max-width:260px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* letter button */
+.letter-btn{
+  display:inline-block;
+  font-size:40px;
+  margin-top:15px;
+  cursor:pointer;
+}
+
+/* secret letter */
+.letter{
+  display:none;
+  background:#fff0f5;
+  padding:18px;
+  border-radius:15px;
+  margin-top:15px;
+  font-size:15px;
+  animation: openLetter 0.4s ease;
+}
+
+@keyframes openLetter{
+  from{ transform:scale(0.8); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+/* cards */
+.card{
+  background:#fff0f5;
+  padding:18px;
+  margin:15px 0;
+  border-radius:20px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* choice message */
+.choice-msg{
+  display:none;
+  margin-top:15px;
+  font-size:15px;
+  color:#ff4d88;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST SCREEN -->
+<section id="start">
+  <h1>Will you be my Valentine? 💖</h1>
+
+  <div class="buttons">
+    <button id="yes" onclick="showLove()">Yes 💕</button>
+    <button id="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+</section>
+
+<!-- AFTER YES -->
+<div id="love" class="hidden">
+
+  <!-- PHOTO -->
+  <section>
+    <img src="gf.jpg" class="photo" alt="Her Photo">
+    <h2>Good choice baby 🥰</h2>
+    <p>You just made me the happiest ❤️</p>
+  </section>
+
+  <!-- SECRET LETTER -->
+  <section>
+    <h2>Secret Message 💌</h2>
+
+    <!-- Letter button -->
+    <div class="letter-btn" onclick="openLetter()">✉️</div>
+    <p>(Tap the letter)</p>
+
+    <!-- Hidden letter content -->
+    <div id="letter" class="letter">
+      You are not just my Valentine,  
+      you are my peace, my smile,  
+      and my forever ❤️
+    </div>
+  </section>
+
+  <!-- VIRTUAL DATE IDEAS -->
+  <section>
+    <h2>Our Virtual Date Ideas 💑</h2>
+
+    <div class="card" onclick="showChoice()">🎬 Watch movie together</div>
+    <div class="card" onclick="showChoice()">🎧 Share songs</div>
+    <div class="card" onclick="showChoice()">📞 Late night calls</div>
+    <div class="card" onclick="showChoice()">📸 Random photos</div>
+
+    <p id="choiceMsg" class="choice-msg">Yes baby, good choice ❤️</p>
+  </section>
+
+</div>
+
+<script>
+function moveNo(){
+  const no = document.getElementById("no");
+  no.style.left = Math.random()*200 + "px";
+  no.style.top = Math.random()*80 + "px";
+}
+
+function showLove(){
+  document.getElementById("start").style.display="none";
+  document.getElementById("love").style.display="block";
+  window.scrollTo(0,0);
+}
+
+function openLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+function showChoice(){
+  const msg = document.getElementById("choiceMsg");
+  msg.style.display = "block";
+  setTimeout(()=>{ msg.style.display="none"; },2000);
+}
+</script>
+
+</body>
+</html>
